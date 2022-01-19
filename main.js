@@ -39,7 +39,7 @@ class Project {
         let cars = await this.requestCars();
 
         let minYear = cars[0].factoryYear;
-        for(let i=1; i<cars-length; i++) {
+        for(let i=1; i<cars.length; i++) {
             if(cars[i].factoryYear < minYear) {
                 minYear = cars[i].factoryYear;
             }
