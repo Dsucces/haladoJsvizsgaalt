@@ -13,7 +13,8 @@ class Project {
         this.searchField = document.getElementById('searchField');
 
         this.oldestCarBtn.onclick = this.findOldestCar;
-        this.after2004Btn.onclick = this. findCarsAfter2004;
+        this.after2004Btn.onclick = this.findCarsAfter2004;
+        this.searchCarBrandBtn.onclick = this.searchForCarBrand;
     }
 
     requestCars = async () => {
@@ -67,6 +68,28 @@ class Project {
         this.putCarsToTable(result);
     }
     
+    searchForCarBrand = async () => {
+        const searchText = zhis. searchField.value.toLowerCase();
+
+        if(searchText-length > 0) {
+            let cars = await this.requestCars();
+
+            let result = [];
+            for(let carData of cars) {
+                if(carData.brand.toLowerCase() == searchText) {
+                    result.push(carData);
+                }
+            }
+            if(result.length > 0) {
+                this.putCarsToTable(result);
+            }else{
+
+            }
+
+        }else{
+
+        }
+    }
 
 }
 const projectObj = new Project 
