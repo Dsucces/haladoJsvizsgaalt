@@ -2,6 +2,7 @@ class Project {
     resultTbody;
     oldestCarBtn;
     after2004Btn;
+    before2004Btn
     searchCarBrandBtn;
     searchField;
 
@@ -9,11 +10,13 @@ class Project {
         this.resultTbody = document.getElementById('resultTbody');
         this.oldestCarBtn = document.getElementById('oldestCarBtn');
         this.after2004Btn = document.getElementById('after2004Btn');
+        this.before2004Btn = document.getElementById('before2004Btn');
         this.searchCarBrandBtn = document.getElementById('searchCarBrandBtn');
         this.searchField = document.getElementById('searchField');
 
         this.oldestCarBtn.onclick = this.findOldestCar;
         this.after2004Btn.onclick = this.findCarsAfter2004;
+        this.before2004Btn.onclick = this.findCarsBefore2004;
         this.searchCarBrandBtn.onclick = this.searchForCarBrand;
     }
 
@@ -97,6 +100,17 @@ class Project {
             this.showErrorMsg('A beviteli mező űres!');
 
         }
+    }
+    findCarsBefore2004 = async () => {
+        let cars = await this.requestCars();
+
+        let result = [];
+        for(let carData of cars) {
+            if(carData.factoryYear < 2004) {
+                result.push(carData);
+            }
+        }
+        this.putCarsToTable(result);
     }
 
 }
