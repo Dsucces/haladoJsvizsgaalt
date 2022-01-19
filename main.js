@@ -12,9 +12,13 @@ class Project {
         this.searchCarBrandBtn = document.getElementById('searchCarBrandBtn');
         this.searchField = document.getElementById('searchField');
 
-        this.oldestCarBtn.onclick = this.findOldestCarBtn;
-        this.after2004Btn.onclick = this.findAfter2004;
-        this.searchCarBrandBtn.onclick = this.searchCarBrand;
+        
+    }
+
+    requestCars = async () => {
+        let respond = await fetch('cars.json');
+        let cars = await respond.json();
+        return cars;
     }
 }
 const projectObj = new Project 
